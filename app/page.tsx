@@ -1,65 +1,53 @@
-import Image from "next/image";
-
-export default function Home() {
+export default function AnalyticsDashboard() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-gray-900 text-gray-100 p-4 md:p-8 font-sans">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Header Section */}
+        <header className="mb-8 border-b border-gray-700 pb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
+            LogicLooms Lab: SaaS Revenue Engine
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-gray-400 text-lg">
+            Simulating Monthly Recurring Revenue (MRR) and Churn with dynamic DAX What-If Parameters.
           </p>
+        </header>
+
+        {/* Power BI Embed Container */}
+        <div className="bg-gray-800 p-2 md:p-4 rounded-xl shadow-2xl border border-gray-700">
+          {/* This wrapper forces the iframe to maintain a 16:9 aspect ratio and be responsive */}
+          <div className="relative w-full overflow-hidden" style={{ paddingTop: '56.25%' }}>
+            <iframe 
+              className="absolute top-0 left-0 w-full h-full rounded-lg"
+              title="SaaS MRR & Churn Simulator" 
+              src="https://app.powerbi.com/reportEmbed?reportId=2b052eb6-21fd-45de-8cf2-582d943c83a7&autoAuth=true&embeddedDemo=true" 
+              frameBorder="0" 
+              allowFullScreen={true}>
+            </iframe>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+
+        {/* Technical Architecture Notes (The Interview Flex) */}
+        <section className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h3 className="text-lg font-semibold text-blue-400 mb-3">Architecture & Data Modeling</h3>
+            <ul className="list-disc pl-5 text-gray-300 space-y-2">
+              <li><strong>Disconnected Date Dimension:</strong> Built for dynamic overlap evaluation rather than static relationships.</li>
+              <li><strong>Star Schema:</strong> Optimized for high-performance cross-filtering and scalability.</li>
+              <li><strong>ETL Pipeline:</strong> Managed via Power Query (M) for robust data cleaning and type formatting.</li>
+            </ul>
+          </div>
+          <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h3 className="text-lg font-semibold text-blue-400 mb-3">Advanced DAX Implementation</h3>
+            <ul className="list-disc pl-5 text-gray-300 space-y-2">
+              <li><strong>Active Subscriptions:</strong> Calculated using multi-condition <code className="bg-gray-700 px-1 rounded text-pink-300">FILTER</code> contexts.</li>
+              <li><strong>Point-in-Time MRR:</strong> Implemented <code className="bg-gray-700 px-1 rounded text-pink-300">CALCULATE</code> for accurate revenue snapshots.</li>
+              <li><strong>Predictive Analytics:</strong> Deployed custom variables for What-If pricing simulations.</li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
     </div>
   );
 }
